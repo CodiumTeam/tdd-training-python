@@ -1,0 +1,3 @@
+class FizzBuzz:
+
+   pass
