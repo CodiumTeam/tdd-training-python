@@ -1,0 +1,3 @@
+class PasswordValidator:
+
+   pass
