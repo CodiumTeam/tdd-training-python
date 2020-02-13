@@ -1,7 +1,7 @@
 import unittest
 from roman_numerals import RomanNumerals
 
-class RomanNumerals(unittest.TestCase):
+class RomanNumeralsTest(unittest.TestCase):
 
     def test_xxx(self):
         self.assertEqual(True, True)
