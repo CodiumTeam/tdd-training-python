@@ -1,0 +1,2 @@
+class RegisterUser:
+    pass
