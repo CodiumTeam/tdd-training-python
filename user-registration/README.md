@@ -25,7 +25,7 @@ Part 2
 ### Example of spy
 
     def test_should_send_an_email(self):
-        emailSender = Mock()
+        email_sender = Mock()
         user_registration = UserRegistration(email_sender)
     
         user_registration.register()
