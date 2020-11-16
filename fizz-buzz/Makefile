@@ -1,26 +1,11 @@
-default:
-	@printf "$$HELP"
+.PHONY: default test docker-build docker-test
+default: docker-test
 
-run-python2:
-	pytest
-
-run:
+test:
 	python3 -m unittest tests/fizz_buzz_test.py
 
-docker-run:
-	docker run -v $(shell pwd):/opt/project -w /opt/project python make run
+docker-build:
+	@docker build .. -t codium-tdd-training
 
-docker-win-run:
-	docker run -v %cd%:/opt/project -w /opt/project python make run
-
-define HELP
-# Local commands
-	- make run\tRun locally using Python3 and Unittest
-	- make run-python2\t\tRun locally using Python2 and Pytest
-# Docker commands
-	- make docker-run\tRun inside docker with Python3
- Please execute "make <command>". Example make help
-
-endef
-
-export HELP
+docker-test:
+	docker run -v ${PWD}:/opt/project -w /opt/project codium-tdd-training make test
