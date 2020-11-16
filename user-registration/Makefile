@@ -1,37 +1,20 @@
-default:
-	@printf "$$HELP"
+.PHONY: default test coverage docker-build docker-test docker-coverage
+default: docker-test
 
-run-python2:
-	pytest
+test:
+	python3 -m unittest
 
-run:
-	python -m unittest tests/user_registration_test.py
 coverage:
-	pytest --cov=print_date tests
+	coverage run --source=user_registration -m unittest
+	coverage report
 	coverage html
-	@printf "Please open the report at htmlcov/index.html\n"
+	@printf "To visualize the lines open the report at htmlcov/index.html\n"
 
 docker-build:
-	@docker build . -t python-coverage
-docker-run:
-	@docker run -v $(shell pwd):/opt/project -w /opt/project python-coverage make run
+	@docker build .. -t codium-tdd-training
+
+docker-test:
+	docker run --rm -v ${PWD}:/opt/project -w /opt/project codium-tdd-training make test
+
 docker-coverage:
-	@docker run -v $(shell pwd):/opt/project -w /opt/project python-coverage make coverage
-
-docker-win-run:
-	docker run -v %cd%:/opt/project -w /opt/project python-coverage make run
-
-define HELP
-# Local commands
-	- make run\tRun locally using Python3 and Unittest
-	- make coverage\tRun the code coverage locally using Python3 and Unittest
-	- make run-python2\t\tRun locally using Python2 and Pytest
-# Docker commands
-	- make docker-build\tBuild the image to run the tests
-	- make docker-run\tRun the tests inside docker
-	- make docker-coverage\tRun inside docker the code coverage
- Please execute "make <command>". Example make help
-
-endef
-
-export HELP
+	@docker run --rm -v ${PWD}:/opt/project -w /opt/project codium-tdd-training make coverage

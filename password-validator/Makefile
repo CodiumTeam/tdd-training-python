@@ -1,26 +1,20 @@
-default:
-	@printf "$$HELP"
+.PHONY: default test coverage docker-build docker-test docker-coverage
+default: docker-test
 
-run-python2:
-	pytest
+test:
+	python3 -m unittest
 
-run:
-	python3 -m unittest tests/password_validator_test.py
+coverage:
+	coverage run --source=password_validator -m unittest
+	coverage report
+	coverage html
+	@printf "To visualize the lines open the report at htmlcov/index.html\n"
 
-docker-run:
-	docker run -v $(shell pwd):/opt/project -w /opt/project python make run
+docker-build:
+	@docker build .. -t codium-tdd-training
 
-docker-win-run:
-	docker run -v %cd%:/opt/project -w /opt/project python make run
+docker-test:
+	docker run --rm -v ${PWD}:/opt/project -w /opt/project codium-tdd-training make test
 
-define HELP
-# Local commands
-	- make run\tRun locally using Python3 and Unittest
-	- make run-python2\t\tRun locally using Python2 and Pytest
-# Docker commands
-	- make docker-run\tRun inside docker with Python3
- Please execute "make <command>". Example make help
-
-endef
-
-export HELP
+docker-coverage:
+	@docker run --rm -v ${PWD}:/opt/project -w /opt/project codium-tdd-training make coverage
