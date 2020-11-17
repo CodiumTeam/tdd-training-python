@@ -55,7 +55,7 @@ function validateMake() {
     if [ $? -ne 0 ]; then
       echo "Error"
       echo "Do you have make installed?"
-      echo "If you don't want to install make, you can open tennis-refactoring-kata and run the tests using your IDE."
+      echo "If you don't want to install make, you can run read how to run the tests opening the Makefile."
       exit -1
     else
       echo "Ok"
