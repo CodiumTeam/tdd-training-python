@@ -1,11 +1,11 @@
 @echo off
 
 CALL :validateDocker
-CALL :validateKata fizz-buzz "docker run --rm -v %CD%:/opt/project -w /opt/project codiumteam/tdd-training-python make test"
-CALL :validateKata roman-numerals "docker run --rm -v %CD%:/opt/project -w /opt/project codiumteam/tdd-training-python make test"
-CALL :validateKata password-validator "docker run --rm -v %CD%:/opt/project -w /opt/project codiumteam/tdd-training-python make test"
-CALL :validateKata user-registration "docker run --rm -v %CD%:/opt/project -w /opt/project codiumteam/tdd-training-python make test"
-CALL :validateKata coffee-machine "docker run --rm -v %CD%:/opt/project -w /opt/project codiumteam/tdd-training-python make test"
+CALL :validateKata fizz-buzz "docker run --rm -v %CD%:/kata codiumteam/tdd-training-python make test"
+CALL :validateKata roman-numerals "docker run --rm -v %CD%:/kata codiumteam/tdd-training-python make test"
+CALL :validateKata password-validator "docker run --rm -v %CD%:/kata codiumteam/tdd-training-python make test"
+CALL :validateKata user-registration "docker run --rm -v %CD%:/kata codiumteam/tdd-training-python make test"
+CALL :validateKata coffee-machine "docker run --rm -v %CD%:/kata codiumteam/tdd-training-python make test"
 
 goto :eof
 

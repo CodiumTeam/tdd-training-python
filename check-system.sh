@@ -39,7 +39,7 @@ function validateDocker() {
     fi
 
     echo -n "Validating docker mount permissions..."
-    (docker run --rm -v ${PWD}:/opt/project -w /opt/project codiumteam/tdd-training-python ls) > /dev/null
+    (docker run --rm -v ${PWD}:/kata codiumteam/tdd-training-python ls) > /dev/null
     if [ $? -ne 0 ]; then
       echo "Error"
       echo "Are you sure that you have permissions to mount your volumes?"

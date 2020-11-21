@@ -84,11 +84,11 @@ Generate the image
 
 Run the tests
     
-    docker run -v %cd%:/opt/project -w /opt/project python-coverage make run
+    docker run -v %cd%:/kata python-coverage make run
 
 Run the code coverage
 
-    docker run -v %cd%:/opt/project -w /opt/project python-coverage make coverage
+    docker run -v %cd%:/kata python-coverage make coverage
 
 
 ## Authors
