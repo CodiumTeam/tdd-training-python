@@ -21,6 +21,8 @@ How to use Unittest Mock to generate the doubles.
 [Unittest](https://cpython-test-docs.readthedocs.io/en/latest/library/unittest.mock.html)
 ### Example of spy
 
+    from unittest.mock import Mock
+
     def test_should_send_an_email(self):
         emailSender = Mock()
         user_registration = UserRegistration(email_sender)
@@ -31,6 +33,8 @@ How to use Unittest Mock to generate the doubles.
 
 	
 ### Example of stub
+    
+    from unittest.mock import Mock
 
     def test_should_success_when_password_is_valid(self):
         password_validator = Mock()
