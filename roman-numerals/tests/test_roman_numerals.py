@@ -1,7 +1,18 @@
 import unittest
+
+from parameterized import parameterized
+
 from roman_numerals import RomanNumerals
+
 
 class RomanNumeralsTest(unittest.TestCase):
 
-    def test_xxx(self):
-        self.assertEqual(True, True)
+    @parameterized.expand([
+        (1, "I")
+    ])
+    def test_convert_decimal_numbers(self, decimal: int, expected_roman: str):
+        roman_numerals = RomanNumerals()
+
+        roman = roman_numerals.convert(decimal)
+
+        self.assertEqual(expected_roman, roman)

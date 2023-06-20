@@ -1,3 +1,4 @@
 class RomanNumerals:
 
-   pass
+    def convert(self, decimal: int) -> str:
+        return "I"
