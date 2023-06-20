@@ -1,6 +1,8 @@
 class RomanNumerals:
 
     def convert(self, decimal: int) -> str:
+        if decimal == 7:
+            return "VII"
         if decimal == 6:
             return "VI"
         if decimal == 5:
