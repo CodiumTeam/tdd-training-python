@@ -6,8 +6,7 @@ class RomanNumerals:
             4: "IV",
             1: "I",
         }
-        for decimal_key in conversion.keys():
-            decimal_value = conversion.get(decimal_key)
+        for decimal_key, decimal_value in conversion.items():
             if decimal >= decimal_key:
                 return decimal_value + self.convert(decimal - decimal_key)
         return ""
