@@ -12,6 +12,7 @@ class RomanNumeralsTest(unittest.TestCase):
         (2, "II"),
         (3, "III"),
         (4, "IV"),
+        (5, "V"),
     ])
     def test_convert_decimal_numbers(self, decimal: int, expected_roman: str):
         roman_numerals = RomanNumerals()
