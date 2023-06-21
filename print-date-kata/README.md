@@ -18,7 +18,7 @@ How to build a Mock and Stub manually.
 How to use Unittest Mock to generate the doubles.
 
 ## Tools
-[Unittest](https://cpython-test-docs.readthedocs.io/en/latest/library/unittest.mock.html)
+[Unittest](https://docs.python.org/3/library/unittest.mock.html)
 ### Example of spy
 
     from unittest.mock import Mock

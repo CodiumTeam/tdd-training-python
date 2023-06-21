@@ -21,7 +21,7 @@ Part 2
 - Do not forget to refactor the code.
 
 ## Tools
-[Unittest](https://cpython-test-docs.readthedocs.io/en/latest/library/unittest.mock.html)
+[Unittest](https://docs.python.org/3/library/unittest.mock.html)
 ### Example of spy
 
     def test_should_send_an_email(self):
