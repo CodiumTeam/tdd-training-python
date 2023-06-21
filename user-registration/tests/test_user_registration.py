@@ -29,8 +29,6 @@ class RegisterUserTest(unittest.TestCase):
         self.user_repository.save.assert_called_with(expected_user)
 
     def test_confirmation_email_is_sent(self):
-        self.user_id_generator.generate = Mock(return_value="anId")
-
         self.register_user.register("an@email", "valid_password")
 
         email = Email("info@codium.team", "an@email", "Welcome to Codium")
@@ -46,9 +44,7 @@ class RegisterUserTest(unittest.TestCase):
         self.user_repository.save.assert_not_called()
         self.email_sender.send.assert_not_called()
 
-
     def test_do_not_register_the_user_when_password_has_8_character_or_less(self):
-
         register = lambda: self.register_user.register("an@email", "_2345678")
 
         self.assertRaises(InvalidPasswordException, register)
@@ -56,7 +52,6 @@ class RegisterUserTest(unittest.TestCase):
         self.email_sender.send.assert_not_called()
 
     def test_do_not_register_the_user_when_password_has_not_an_underscore(self):
-
         register = lambda: self.register_user.register("an@email", "123456789")
 
         self.assertRaises(InvalidPasswordException, register)
