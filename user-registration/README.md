@@ -4,6 +4,10 @@
 Create the functionality using Unit tests and test doubles.
 
 ## Requirements
+Method signature:
+
+    def register(email: str, password: str) -> None
+
 Part 1
 - Validate that the user is persisted
 - A userId is randomly generated
@@ -24,6 +28,8 @@ Part 2
 [Unittest](https://docs.python.org/3/library/unittest.mock.html)
 ### Example of spy
 
+    from unittest.mock import Mock
+
     def test_should_send_an_email(self):
         email_sender = Mock()
         user_registration = UserRegistration(email_sender)
@@ -34,6 +40,8 @@ Part 2
 
 	
 ### Example of stub
+
+    from unittest.mock import Mock
 
     def test_should_success_when_password_is_valid(self):
         password_validator = Mock()
