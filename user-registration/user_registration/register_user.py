@@ -13,7 +13,7 @@ class RegisterUser:
         self.repository = repository
 
     def register(self, email: str, password: str) -> None:
-        if len(password) <= 8:
+        if len(password) <= 8 or "_" not in password:
             raise InvalidPasswordException()
         if self.repository.find_by_email(email):
             raise UserAlreadyExistsException

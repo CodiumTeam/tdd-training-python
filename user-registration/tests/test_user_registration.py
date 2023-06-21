@@ -42,3 +42,11 @@ class RegisterUserTest(unittest.TestCase):
 
         self.assertRaises(InvalidPasswordException, register)
         self.user_repository.save.assert_not_called()
+
+    def test_do_not_register_the_user_when_password_has_not_an_underscore(self):
+        register_user = RegisterUser(self.user_repository, self.user_id_generator)
+
+        register = lambda: register_user.register("an@email", "123456789")
+
+        self.assertRaises(InvalidPasswordException, register)
+        self.user_repository.save.assert_not_called()
