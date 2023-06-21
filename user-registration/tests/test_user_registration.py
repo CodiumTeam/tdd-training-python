@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import Mock
 
 from user_registration import RegisterUser
+from user_registration.invalid_password_exception import InvalidPasswordException
 from user_registration.user import User
 from user_registration.user_already_exists_exception import UserAlreadyExistsException
 from user_registration.user_id_generator import UserIdGenerator
@@ -32,4 +33,12 @@ class RegisterUserTest(unittest.TestCase):
         register = lambda: register_user.register("an@email", "valid_password")
 
         self.assertRaises(UserAlreadyExistsException, register)
+        self.user_repository.save.assert_not_called()
+
+    def test_do_not_register_the_user_when_password_has_8_character_or_less(self):
+        register_user = RegisterUser(self.user_repository, self.user_id_generator)
+
+        register = lambda: register_user.register("an@email", "_2345678")
+
+        self.assertRaises(InvalidPasswordException, register)
         self.user_repository.save.assert_not_called()
