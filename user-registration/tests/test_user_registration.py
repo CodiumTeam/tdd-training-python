@@ -44,6 +44,8 @@ class RegisterUserTest(unittest.TestCase):
 
         self.assertRaises(UserAlreadyExistsException, register)
         self.user_repository.save.assert_not_called()
+        self.email_sender.send.assert_not_called()
+
 
     def test_do_not_register_the_user_when_password_has_8_character_or_less(self):
 
@@ -51,6 +53,7 @@ class RegisterUserTest(unittest.TestCase):
 
         self.assertRaises(InvalidPasswordException, register)
         self.user_repository.save.assert_not_called()
+        self.email_sender.send.assert_not_called()
 
     def test_do_not_register_the_user_when_password_has_not_an_underscore(self):
 
@@ -58,3 +61,4 @@ class RegisterUserTest(unittest.TestCase):
 
         self.assertRaises(InvalidPasswordException, register)
         self.user_repository.save.assert_not_called()
+        self.email_sender.send.assert_not_called()
