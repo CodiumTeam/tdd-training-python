@@ -28,8 +28,8 @@ function validateDocker() {
       echo "Ok"
     fi
 
-    echo -n "Creating the docker image..."
-    (docker build . -t codiumteam/tdd-training-python) > /dev/null
+    echo -n "Downloading the docker image..."
+    (docker pull codiumteam/tdd-training-python) > /dev/null
     if [ $? -ne 0 ]; then
       echo "Error"
       echo "Do you have internet connection?"
