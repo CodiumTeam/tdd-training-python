@@ -1,0 +1,6 @@
+coverage
+pytest-cov
+mutmut
+doublex
+doublex-expects
+parameterized
